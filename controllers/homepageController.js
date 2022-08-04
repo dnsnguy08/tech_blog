@@ -1,3 +1,5 @@
+// Homepage routes
+
 const router = require('express').Router();
 const apiController = require('./apiController');
 const {User, Comment, Post} = require('../models');
