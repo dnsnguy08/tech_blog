@@ -1,7 +1,7 @@
 // Homepage routes
 
 const router = require('express').Router();
-const apiController = require('./apiController');
+// const apiController = require('./apiController');
 const {User, Comment, Post} = require('../models');
 
 // renders landing page
@@ -101,6 +101,6 @@ router.get('/post/:id', async (req,res) => {
 });
 
 // sends routes w/ /api to apiController.js file
-router.use('/api', apiController);
+// router.use('/api', apiController);
 
 module.exports = router;
