@@ -1,28 +1,26 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-// create our Comment model
 class Comment extends Model {}
 
-// create fields/columns for Comment model
 Comment.init(
   {
     id: {
-        type: DataTypes.UUID,
+        type: DataTypes.INTEGER,
         primaryKey: true,
         allowNull: false,
-        defaultValue: DataTypes.UUIDV4
+        autoIncrement: true
       },
       userId: {
-        type: DataTypes.UUID,
+        type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: 'users',
+          model: 'user',
           key: 'id'
         }
       },
       postId: {
-        type: DataTypes.UUID,
+        type: DataTypes.INTEGER,
         allowNull: false,
         references: {
           model: 'post',

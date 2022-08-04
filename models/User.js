@@ -1,38 +1,53 @@
-const {Model, DataTypes} = require('sequelize');
+const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 
-// create User our model
+// create our User model
 class User extends Model {}
 
-// create columns for User model
+// define table columns and configuration
 User.init(
     {
+        // define an id column
         id: {
-            type: DataTypes.UUID,
+            type: DataTypes.INTEGER,
+            allowNull: false,
             primaryKey: true,
-            defaultValue: DataTypes.UUIDV4,
+            autoIncrement: true
         },
+        // define a username column
         username: {
             type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                notNull: true,
-            }
+            allowNull: false
         },
+        // define an email column
+        email: {
+          type: DataTypes.STRING,
+          allowNull: false,
+          unique: true,
+          validate: {
+            isEmail: true
+          }
+        },
+        // define a password column
         password: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                notNull: true,
-                len: [6],
+                len: [8]
             }
         }
     },
     {
+
+
         sequelize,
-        modelName: 'users',
+        timestamps: false,
+        // freezeTableName: true,
+        // underscored: true,
+        modelName: 'user',
         hooks: {
+            // set up beforeCreate lifecycle "hook" functionality
             beforeCreate: async (user) => {
                 try {
                     const hashedPassword = await bcrypt.hash(user.password, 8);
@@ -42,8 +57,9 @@ User.init(
                     throw new Error(error);
                 }
             },
+
             beforeUpdate: async (user) => {
-                if(user.password.trim().length > 0){
+                if (user.password.trim().length > 0) {
                     try {
                         const hashedPassword = await bcrypt.hash(user.password, 8);
                         user.password = hashedPassword;
@@ -53,7 +69,7 @@ User.init(
                     }
                 }
             },
-        }
+        },
     }
 );
 
