@@ -82,7 +82,7 @@ API Routes were then created to Perform RESTful CRUD Operations.
   
   ## Repository
   - [Live App](https://the-cool-tech-blog.herokuapp.com/)
-  - [Project Repo](https://github.com/dnsnguy08/e_commerce_back_end)
+  - [Project Repo](https://github.com/dnsnguy08/tech_blog)
   ## Questions
   For any questions, please reach out to:
   - Dennis Nguyen
