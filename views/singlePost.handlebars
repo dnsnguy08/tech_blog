@@ -1,16 +1,16 @@
 <!-- displaying articles -->
-{{> postInfo post}}
+{{> post-info post}}
 
 <!-- displaying form and comments-->
 <!-- only display if logged in -->
-{{#if isLoggedIn}}
+{{#if loggedIn}}
 <form class="comment-form">
   <div>
     <textarea class="ml-5" name="comment-body"></textarea>
   </div>
 
   <div>
-    <button class="button is-warning ml-5 mb-5" type="submit">add comment</button>
+    <button class="button is-warning ml-5 mb-5" type="submit">Add Comment</button>
   </div>
   
 </form>
@@ -18,6 +18,6 @@
 
 {{> comments post.comments}}
 
-{{#if isLoggedIn}}
-<script src="/assets/js/comment.js"></script>
+{{#if loggedIn}}
+<script src="/js/comment.js"></script>
 {{/if}}
