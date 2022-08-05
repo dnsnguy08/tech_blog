@@ -11,7 +11,7 @@ Comment.init(
         allowNull: false,
         autoIncrement: true
       },
-      userId: {
+      user_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -19,7 +19,7 @@ Comment.init(
           key: 'id'
         }
       },
-      postId: {
+      post_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -27,7 +27,7 @@ Comment.init(
           key: 'id'
         }
       },
-      commentText: {
+      comment_text: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -37,8 +37,8 @@ Comment.init(
   },
   {
     sequelize,
-    // freezeTableName: true,
-    // underscored: true,
+    freezeTableName: true,
+    underscored: true,
     modelName: 'comment'
   }
 );
